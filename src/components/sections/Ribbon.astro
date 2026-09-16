@@ -2,7 +2,7 @@
 const items = [
   "Sistemas Distribuídos",
   "Alta Disponibilidade",
-  "Rust & Performance",
+  "Rust & Zero-Cost Abstractions",
   "Go & Concorrência",
   "Engenharia de Dados",
   "APIs Críticas & SLAs",
@@ -12,23 +12,23 @@ const items = [
 ];
 ---
 
-<div class="ribbon-container my-12" aria-hidden="true">
+<div class="ribbon-container my-14" aria-hidden="true">
   <div class="ribbon-track">
     <!-- Bloco 1 -->
     {
-      items.map((item) => (
+      items.map((item, index) => (
         <div class="ribbon-item">
-          <span>{item}</span>
-          <span class="ribbon-dot" />
+          <span class="hover:text-[var(--lava)] transition-colors">{item}</span>
+          <span class={`ribbon-dot ${index % 2 === 0 ? "bg-[var(--lava)] shadow-[0_0_10px_var(--lava)]" : "bg-[var(--coastal)] shadow-[0_0_10px_var(--coastal)]"}`} />
         </div>
       ))
     }
-    <!-- Bloco 2 (duplicado para loop infinito suave) -->
+    <!-- Bloco 2 (duplicado para loop infinito fluido) -->
     {
-      items.map((item) => (
+      items.map((item, index) => (
         <div class="ribbon-item">
-          <span>{item}</span>
-          <span class="ribbon-dot" />
+          <span class="hover:text-[var(--lava)] transition-colors">{item}</span>
+          <span class={`ribbon-dot ${index % 2 === 0 ? "bg-[var(--lava)] shadow-[0_0_10px_var(--lava)]" : "bg-[var(--coastal)] shadow-[0_0_10px_var(--coastal)]"}`} />
         </div>
       ))
     }

@@ -1,12 +1,17 @@
 ---
 version: alpha
 colors:
-  primary: "#78a7ff"
-  canvas: "#050816"
-  surface: "#0b1020"
-  ink: "#f1f6ff"
-  muted: "#9aabc6"
-  signal: "#78a7ff"
+  primary: "#142638"
+  action: "#FF6C2C"
+  coastal: "#179BD7"
+  basil: "#198754"
+  amber: "#F59E0B"
+  canvas: "#080D16"
+  surface: "#0E1724"
+  surfaceCard: "#132032"
+  ink: "#F4F7FA"
+  muted: "#8A9AAA"
+  faint: "#5A6E82"
 typography:
   display:
     fontFamily: "Geist, Arial, sans-serif"
@@ -15,45 +20,37 @@ typography:
   utility:
     fontFamily: "Geist Mono, monospace"
 rounded:
-  card: "2rem"
+  card: "1.5rem"
   control: "9999px"
 spacing:
   page: "1.5rem"
   section: "6rem"
 components:
   primaryAction:
-    backgroundColor: "#78a7ff"
-    textColor: "#050816"
+    backgroundColor: "#FF6C2C"
+    textColor: "#FFFFFF"
+  coastalAction:
+    backgroundColor: "#179BD7"
+    textColor: "#FFFFFF"
+  readyBadge:
+    backgroundColor: "#198754"
+    textColor: "#FFFFFF"
 ---
 
 ## Overview
 
-Este é um portfólio de marca para engenharia de software que resolve problemas operacionais complexos. A referência é um console de missão: sinais claros, superfícies escuras e informação precisa. A assinatura é a malha azul de sinal no hero, que sugere sistemas conectados sem recorrer a estética de IA.
+Este é um portfólio de engenharia de software de alta performance, pigmentado com a vitalidade e solidez operacional inspiradas no Pickfast. A referência visual combina superfícies sólidas em Deep Navy com acentos de alta energia em Lava (#FF6C2C), Coastal Blue (#179BD7) para conectividade técnica e Basil (#198754) para telemetria de sistemas ativos.
 
 ## Colors
 
-Azul quase-preto cria profundidade e confiança. Azul-cobalto é reservado para ação, conexão e estado operacional. Laranja de alerta serve apenas para exceções. Não usar gradientes roxo-azulados, auroras decorativas, brilho verde ou elementos que lembrem produtos de chatbot.
+- **Canvas & Surface** (#080D16 / #0E1724): Azul-marinho profundo ("Deep Sea"), conferindo profundidade, autoridade e elegância técnica.
+- **Lava / Tomato** (#FF6C2C): A cor de alta energia e conversão. Utilizada em botões primários de ação, na fita Ribbon e em pontos focais de máxima prioridade.
+- **Coastal Blue** (#179BD7): Acento de conectividade, dados e infraestrutura tecnológica.
+- **Basil / Success** (#198754): Indicador de sistemas saudáveis, estado online e telemetria ativa.
+- **Amber** (#F59E0B): Destaque de supervisão, exceções e contexto de auditoria.
+- **Ink & Muted** (#F4F7FA / #8A9AAA): Tipografia cristalina de alto contraste, sem ofuscar os olhos.
 
-## Typography
+## Typography & Motion
 
-Geist dá clareza aos textos longos; Geist Mono identifica tempo, tecnologia e rótulos operacionais. Títulos usam tracking fechado e peso semibold; o texto corrido prioriza leitura, nunca slogans em excesso.
-
-## Layout
-
-O conteúdo fica em uma coluna máxima de 1280px, com margens de 24px em telas pequenas e 48px em telas maiores. A página é uma narrativa: proposta, experiência, especialidades e contato. Seções são separadas por linhas finas, não por caixas decorativas.
-
-## Elevation & Depth
-
-A base é plana. Sombras são reservadas para a fotografia no hero e controles flutuantes; bordas translúcidas definem agrupamentos.
-
-## Shapes
-
-CTAs usam cantos técnicos discretos. Painéis grandes usam raio moderado; itens de conteúdo usam divisores e não cartões isolados.
-
-## Components
-
-Links devem descrever a ação. Ícones complementam texto e ícones isolados precisam de nome acessível. Toda animação deve respeitar redução de movimento.
-
-## Do's and Don'ts
-
-Use linguagem específica sobre sistemas, dados e integração. Não invente métricas, clientes ou resultados confidenciais. Preserve contraste alto, foco visível, navegação por teclado e uma rota de contato em qualquer viewport.
+- **Geist & Geist Mono**: Clareza para textos longos e precisão cirúrgica em dados operacionais.
+- **Reveal & Parallax**: Animações suaves aceleradas por GPU, respeitando integralmente `prefers-reduced-motion`.

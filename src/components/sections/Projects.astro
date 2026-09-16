@@ -19,6 +19,10 @@ const products = [
     tech: "n8n · Airflow · APIs · sandbox",
     icon: GitFork,
     slug: "nexus-bridge",
+    accent: "coastal",
+    badgeColor: "border-[var(--coastal)]/30 bg-[var(--coastal)]/10 text-[var(--coastal)]",
+    hoverBorder: "group-hover:border-[var(--coastal)]/50",
+    pillColor: "text-[var(--coastal)]",
   },
   {
     title: "Fiscal Connect",
@@ -28,6 +32,10 @@ const products = [
     tech: "NF-e · webhooks · ERP · validação",
     icon: FileCheck2,
     slug: "fiscal-connect",
+    accent: "lava",
+    badgeColor: "border-[var(--lava)]/30 bg-[var(--lava)]/10 text-[var(--lava)]",
+    hoverBorder: "group-hover:border-[var(--lava)]/50",
+    pillColor: "text-[var(--lava)]",
   },
   {
     title: "Context AI",
@@ -37,6 +45,10 @@ const products = [
     tech: "RAG · agentes · auditoria · aprovação",
     icon: Bot,
     slug: "ia-de-negocio",
+    accent: "amber",
+    badgeColor: "border-[var(--amber)]/30 bg-[var(--amber)]/10 text-[var(--amber)]",
+    hoverBorder: "group-hover:border-[var(--amber)]/50",
+    pillColor: "text-[var(--amber)]",
   },
 ];
 
@@ -47,6 +59,8 @@ const applications = [
       "Painel de operações que conecta receita, pedidos, integrações e exceções em uma leitura acionável.",
     icon: Database,
     slug: "operacoes-dados",
+    iconColor: "text-[var(--coastal)]",
+    badgeBg: "border-[var(--coastal)]/25 bg-[var(--coastal)]/10",
   },
   {
     title: "Fluxo Inbox",
@@ -54,6 +68,8 @@ const applications = [
       "Central de conversas que une WhatsApp, automação e atendimento humano com contexto preservado.",
     icon: MessageSquareMore,
     slug: "automacao-conversacional",
+    iconColor: "text-[var(--lava)]",
+    badgeBg: "border-[var(--lava)]/25 bg-[var(--lava)]/10",
   },
   {
     title: "Linha Sinal",
@@ -61,6 +77,8 @@ const applications = [
       "Monitoramento industrial para tornar eventos do chão de fábrica visíveis e fáceis de priorizar.",
     icon: Factory,
     slug: "telemetria-industrial",
+    iconColor: "text-[var(--amber)]",
+    badgeBg: "border-[var(--amber)]/25 bg-[var(--amber)]/10",
   },
   {
     title: "Station Control",
@@ -68,6 +86,8 @@ const applications = [
       "Aplicação desktop para operações locais que exigem estabilidade, velocidade e sincronização controlada.",
     icon: MonitorCog,
     slug: "desktop-critico",
+    iconColor: "text-[#198754]",
+    badgeBg: "border-[#198754]/30 bg-[#198754]/10",
   },
 ];
 ---
@@ -97,14 +117,14 @@ const applications = [
   >
     {
       products.map(
-        ({ title, subtitle, description, tech, icon: Icon, slug }, index) => (
+        ({ title, subtitle, description, tech, icon: Icon, slug, badgeColor, pillColor }, index) => (
           <article
             data-reveal
             data-reveal-delay={(index + 1) * 100}
-            class="group flex min-h-96 flex-col bg-[var(--canvas)] p-7 transition-all duration-300 hover:bg-[var(--surface)] hover:shadow-2xl"
+            class="group flex min-h-96 flex-col bg-[#080d16] p-8 transition-all duration-300 hover:bg-[#0e1724] hover:shadow-2xl"
           >
             <div class="flex items-center justify-between">
-              <div class="grid h-12 w-12 place-items-center rounded-xl border border-emerald-300/25 bg-emerald-300/10 text-emerald-300 transition-transform duration-300 group-hover:scale-110 group-hover:border-emerald-300/50">
+              <div class={`grid h-12 w-12 place-items-center rounded-xl border ${badgeColor} transition-transform duration-300 group-hover:scale-110`}>
                 <Icon class="w-6 h-6" aria-hidden="true" />
               </div>
               <span class="font-mono text-xs text-[var(--faint)]">
@@ -112,20 +132,20 @@ const applications = [
               </span>
             </div>
 
-            <p class="mt-8 font-mono text-[.65rem] font-bold uppercase tracking-[.1em] text-emerald-300">
+            <p class={`mt-8 font-mono text-[.68rem] font-bold uppercase tracking-[.12em] ${pillColor}`}>
               {subtitle}
             </p>
-            <h3 class="mt-3 text-2xl font-semibold tracking-[-.035em] text-white transition-colors duration-200 group-hover:text-emerald-200">
+            <h3 class="mt-3 text-2xl font-semibold tracking-[-.035em] text-white transition-colors duration-200 group-hover:text-white">
               {title}
             </h3>
             <p class="mt-4 leading-7 text-[var(--muted)]">{description}</p>
             <div class="mt-auto pt-8">
-              <p class="font-mono text-xs font-semibold uppercase tracking-[.08em] text-emerald-100/70">
+              <p class="font-mono text-xs font-semibold uppercase tracking-[.08em] text-[var(--muted)]">
                 {tech}
               </p>
               <a
                 href={`/demos/${slug}`}
-                class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white transition hover:text-emerald-300 group-hover:translate-x-1"
+                class={`mt-5 inline-flex items-center gap-2 text-sm font-semibold transition hover:underline group-hover:translate-x-1 ${pillColor}`}
               >
                 Ver como funciona
                 <ArrowUpRight
@@ -157,23 +177,23 @@ const applications = [
 
     <div class="mt-8 grid gap-4 md:grid-cols-2">
       {
-        applications.map(({ title, description, icon: Icon, slug }, index) => (
+        applications.map(({ title, description, icon: Icon, slug, iconColor, badgeBg }, index) => (
           <a
             href={`/demos/${slug}`}
             data-reveal
             data-reveal-delay={(index + 1) * 80}
-            class="interactive-card group rounded-2xl border border-white/10 bg-[var(--surface)]/60 p-6 backdrop-blur transition hover:border-emerald-300/40 hover:bg-[var(--surface)]"
+            class="interactive-card group rounded-2xl border border-white/10 bg-[#0e1724]/70 p-6 backdrop-blur transition hover:bg-[#132032]"
           >
             <div class="flex items-start justify-between gap-4">
-              <div class="grid h-10 w-10 place-items-center rounded-lg border border-emerald-300/20 bg-emerald-300/10 text-emerald-300 transition-transform duration-200 group-hover:scale-105">
+              <div class={`grid h-11 w-11 place-items-center rounded-xl border ${badgeBg} ${iconColor} transition-transform duration-200 group-hover:scale-105`}>
                 <Icon class="w-5 h-5" aria-hidden="true" />
               </div>
               <ArrowUpRight
-                class="w-4 h-4 text-[var(--faint)] transition-all duration-200 group-hover:text-emerald-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                class="w-4 h-4 text-[var(--faint)] transition-all duration-200 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 aria-hidden="true"
               />
             </div>
-            <h4 class="mt-6 text-lg font-semibold text-white transition-colors group-hover:text-emerald-200">
+            <h4 class="mt-6 text-lg font-semibold text-white transition-colors">
               {title}
             </h4>
             <p class="mt-2 text-sm leading-6 text-[var(--muted)]">

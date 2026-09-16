@@ -12,16 +12,21 @@ const whatsappUrl =
 >
   <div
     data-reveal
-    class="relative overflow-hidden rounded-[2rem] border border-emerald-200/20 bg-[var(--surface)] p-8 shadow-2xl sm:p-12 lg:p-16"
+    class="relative overflow-hidden rounded-[2rem] border border-[var(--lava)]/25 bg-[#0e1724] p-8 shadow-2xl sm:p-12 lg:p-16"
   >
-    <!-- Background subtle glow -->
+    <!-- Background subtle glow Pickfast style -->
     <div
       aria-hidden="true"
-      class="absolute -bottom-24 -right-24 -z-10 h-72 w-72 rounded-full bg-emerald-300/10 blur-[90px]"
+      class="absolute -bottom-24 -right-24 -z-10 h-80 w-80 rounded-full bg-[var(--lava)]/10 blur-[100px]"
+    >
+    </div>
+    <div
+      aria-hidden="true"
+      class="absolute -top-24 -left-24 -z-10 h-80 w-80 rounded-full bg-[var(--coastal)]/10 blur-[100px]"
     >
     </div>
 
-    <p class="eyebrow">Contato direto</p>
+    <p class="eyebrow text-[var(--lava)]">Contato direto</p>
     <div class="mt-5 grid gap-10 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
       <div>
         <h2
@@ -40,7 +45,7 @@ const whatsappUrl =
           href={whatsappUrl}
           target="_blank"
           rel="noreferrer"
-          class="group inline-flex min-h-12 items-center justify-between rounded-full bg-emerald-300 px-6 font-semibold text-slate-950 transition-all duration-200 hover:bg-emerald-200 hover:shadow-[0_0_20px_rgba(120,167,255,0.45)] hover:scale-[1.01]"
+          class="group inline-flex min-h-12 items-center justify-between rounded-full bg-[#198754] px-6 font-semibold text-white shadow-[0_4px_16px_rgba(25,135,84,0.35)] transition-all duration-200 hover:bg-[#157347] hover:shadow-[0_6px_22px_rgba(25,135,84,0.5)] hover:scale-[1.01]"
         >
           <span>Falar no WhatsApp</span>
           <MessageCircle
@@ -50,11 +55,11 @@ const whatsappUrl =
         </a>
         <a
           href="mailto:contato@icbox.com.br"
-          class="group inline-flex min-h-12 items-center justify-between rounded-full border border-white/15 bg-white/[0.02] px-6 font-semibold text-white transition-all duration-200 hover:border-emerald-300/50 hover:bg-white/5 hover:scale-[1.01]"
+          class="group inline-flex min-h-12 items-center justify-between rounded-full border border-[var(--coastal)]/30 bg-white/[0.02] px-6 font-semibold text-white transition-all duration-200 hover:border-[var(--coastal)] hover:bg-[var(--coastal)]/10 hover:scale-[1.01]"
         >
           <span>Enviar e-mail</span>
           <Mail
-            class="w-5 h-5 text-[var(--muted)] transition-colors duration-200 group-hover:text-emerald-300"
+            class="w-5 h-5 text-[var(--coastal)] transition-colors duration-200 group-hover:text-white"
             aria-hidden="true"
           />
         </a>
@@ -62,11 +67,11 @@ const whatsappUrl =
           href="https://www.linkedin.com/in/ideilson/"
           target="_blank"
           rel="noreferrer"
-          class="group inline-flex min-h-12 items-center justify-between rounded-full border border-white/15 bg-white/[0.02] px-6 font-semibold text-white transition-all duration-200 hover:border-emerald-300/50 hover:bg-white/5 hover:scale-[1.01]"
+          class="group inline-flex min-h-12 items-center justify-between rounded-full border border-white/15 bg-white/[0.02] px-6 font-semibold text-white transition-all duration-200 hover:border-white/40 hover:bg-white/5 hover:scale-[1.01]"
         >
           <span>Conectar no LinkedIn</span>
           <ArrowUpRight
-            class="w-5 h-5 text-[var(--muted)] transition-all duration-200 group-hover:text-emerald-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            class="w-5 h-5 text-[var(--muted)] transition-all duration-200 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             aria-hidden="true"
           />
         </a>
