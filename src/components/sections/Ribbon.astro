@@ -1,0 +1,36 @@
+---
+const items = [
+  "Sistemas Distribuídos",
+  "Alta Disponibilidade",
+  "Rust & Performance",
+  "Go & Concorrência",
+  "Engenharia de Dados",
+  "APIs Críticas & SLAs",
+  "Observabilidade & Telemetria",
+  "Design de Produtos B2B",
+  "Integrações Resilientes",
+];
+---
+
+<div class="ribbon-container my-12" aria-hidden="true">
+  <div class="ribbon-track">
+    <!-- Bloco 1 -->
+    {
+      items.map((item) => (
+        <div class="ribbon-item">
+          <span>{item}</span>
+          <span class="ribbon-dot" />
+        </div>
+      ))
+    }
+    <!-- Bloco 2 (duplicado para loop infinito suave) -->
+    {
+      items.map((item) => (
+        <div class="ribbon-item">
+          <span>{item}</span>
+          <span class="ribbon-dot" />
+        </div>
+      ))
+    }
+  </div>
+</div>

@@ -1,0 +1,212 @@
+---
+import RootLayout from "../../layouts/RootLayout.astro";
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  Bell,
+  CheckCircle2,
+  CircleAlert,
+  MoreHorizontal,
+} from "lucide-astro";
+import { demos, type DemoSlug } from "../../lib/demos";
+
+export function getStaticPaths() {
+  return Object.keys(demos).map((slug) => ({
+    params: { slug },
+    props: { demo: demos[slug as DemoSlug] },
+  }));
+}
+
+const { slug } = Astro.params;
+const { demo } = Astro.props;
+
+const accent =
+  demo.accent === "emerald"
+    ? "text-emerald-300 bg-emerald-300/10 border-emerald-300/20"
+    : demo.accent === "sky"
+      ? "text-sky-300 bg-sky-300/10 border-sky-300/20"
+      : "text-amber-300 bg-amber-300/10 border-amber-300/20";
+---
+
+<RootLayout
+  title={`${demo.name} — demonstração`}
+  description={demo.summary}
+  canonicalPath={`/demos/${slug}`}
+>
+  <main class="min-h-screen bg-[var(--canvas)]">
+    <header class="border-b border-white/10 bg-[#07111f]/80 backdrop-blur sticky top-0 z-40">
+      <div
+        class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-12"
+      >
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-sm font-medium text-[var(--muted)] hover:text-white transition group"
+        >
+          <ArrowLeft class="w-4 h-4 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
+          Voltar ao portfólio
+        </a>
+        <div class="flex items-center gap-2">
+          <span class="status-pulse">
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-300"></span>
+          </span>
+          <p
+            class="font-mono text-xs font-semibold uppercase tracking-[.12em] text-[var(--faint)]"
+          >
+            Interface demonstrativa
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <section class="mx-auto max-w-7xl px-6 py-16 md:px-12 lg:py-24">
+      <p class="eyebrow" data-reveal>{demo.eyebrow}</p>
+      <div
+        class="mt-5 grid gap-12 lg:grid-cols-[.82fr_1.18fr] lg:items-end"
+      >
+        <div data-reveal data-reveal-delay="100">
+          <h1
+            class="max-w-xl text-4xl font-semibold tracking-[-.055em] text-white sm:text-5xl"
+          >
+            {demo.title}
+          </h1>
+          <p class="mt-6 max-w-xl text-lg leading-8 text-[var(--muted)]">
+            {demo.summary}
+          </p>
+          <p
+            class="mt-6 inline-block font-mono text-xs font-semibold uppercase tracking-[.08em] text-emerald-200 border border-emerald-300/20 bg-emerald-300/5 px-3 py-1 rounded-md"
+          >
+            {demo.pill}
+          </p>
+          <div class="mt-9">
+            <a
+              href="#contact"
+              class="inline-flex items-center gap-2 font-semibold text-emerald-300 hover:text-emerald-200 transition group"
+            >
+              Quero uma aplicação assim
+              <ArrowUpRight class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+
+        <section
+          data-reveal
+          data-reveal-delay="200"
+          data-parallax
+          data-parallax-speed="-0.03"
+          aria-label={`Prévia da aplicação ${demo.name}`}
+          class="overflow-hidden rounded-3xl border border-white/10 bg-[#0a1726] shadow-2xl shadow-black/40"
+        >
+          <div
+            class="flex items-center justify-between border-b border-white/10 px-5 py-4"
+          >
+            <div class="flex items-center gap-3">
+              <span class="h-3 w-3 rounded-full bg-rose-500/80"></span>
+              <span class="h-3 w-3 rounded-full bg-amber-500/80"></span>
+              <span class="h-3 w-3 rounded-full bg-emerald-500/80"></span>
+              <p class="ml-2 text-sm font-semibold text-white">{demo.name}</p>
+            </div>
+            <button
+              type="button"
+              aria-label="Mais opções"
+              class="rounded-lg p-2 text-[var(--muted)] hover:bg-white/5 hover:text-white transition"
+            >
+              <MoreHorizontal class="w-5 h-5" aria-hidden="true" />
+            </button>
+          </div>
+
+          <div class="grid gap-4 p-5 sm:grid-cols-[1.1fr_.9fr]">
+            <div
+              class="interactive-card rounded-2xl border border-white/10 bg-white/[.035] p-5"
+            >
+              <p
+                class="font-mono text-[.65rem] font-bold uppercase tracking-[.1em] text-[var(--faint)]"
+              >
+                {demo.metricLabel}
+              </p>
+              <p
+                class="mt-3 text-4xl font-semibold tracking-[-.05em] text-white"
+              >
+                {demo.metric}
+              </p>
+              <div
+                class="mt-7 flex h-16 items-end gap-1.5"
+                aria-label="Gráfico ilustrativo"
+              >
+                <span class="h-[35%] flex-1 rounded-t bg-white/10 transition-all duration-500 hover:h-[45%]"></span>
+                <span class="h-[58%] flex-1 rounded-t bg-white/15 transition-all duration-500 hover:h-[65%]"></span>
+                <span class="h-[46%] flex-1 rounded-t bg-white/15 transition-all duration-500 hover:h-[55%]"></span>
+                <span class="h-[80%] flex-1 rounded-t bg-emerald-300/70 transition-all duration-500 hover:h-[88%]"></span>
+                <span class="h-[68%] flex-1 rounded-t bg-emerald-300 transition-all duration-500 hover:h-[75%]"></span>
+                <span class="h-[92%] flex-1 rounded-t bg-emerald-200 transition-all duration-500 hover:h-[98%]"></span>
+              </div>
+            </div>
+
+            <div
+              class="interactive-card rounded-2xl border border-white/10 bg-white/[.035] p-5"
+            >
+              <p
+                class="font-mono text-[.65rem] font-bold uppercase tracking-[.1em] text-[var(--faint)]"
+              >
+                Estado agora
+              </p>
+              <div class={`mt-4 rounded-xl border p-3 ${accent}`}>
+                <div class="flex gap-2 text-sm font-semibold">
+                  <CheckCircle2 class="w-4 h-4 shrink-0" aria-hidden="true" />
+                  {demo.primary}
+                </div>
+              </div>
+              <div
+                class="mt-3 flex items-center gap-2 text-sm text-[var(--muted)]"
+              >
+                <Bell class="w-4 h-4 shrink-0 text-amber-300" aria-hidden="true" />
+                {demo.secondary}
+              </div>
+            </div>
+
+            <div
+              class="sm:col-span-2 rounded-2xl border border-white/10 bg-white/[.035] p-2"
+            >
+              {
+                demo.items.map((item, index) => (
+                  <div class="flex items-center justify-between gap-3 rounded-xl px-3 py-3 text-sm transition hover:bg-white/[0.02]">
+                    <div class="flex items-center gap-3">
+                      <span
+                        class={`grid h-7 w-7 place-items-center rounded-lg text-xs font-bold ${index === 2 ? "bg-amber-300/10 text-amber-300" : "bg-emerald-300/10 text-emerald-300"}`}
+                      >
+                        {index + 1}
+                      </span>
+                      <span class="text-slate-200">{item}</span>
+                    </div>
+                    {index === 2 ? (
+                      <CircleAlert
+                        class="w-4 h-4 text-amber-300 shrink-0"
+                        aria-label="Atenção"
+                      />
+                    ) : (
+                      <CheckCircle2
+                        class="w-4 h-4 text-emerald-300 shrink-0"
+                        aria-label="Concluído"
+                      />
+                    )}
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="contact" class="border-t border-white/10 px-6 py-14 text-center" data-reveal>
+      <p class="text-[var(--muted)]">
+        Esta interface usa dados fictícios para demonstrar uma direção de produto.
+      </p>
+      <a
+        href="/#contact"
+        class="mt-6 inline-flex rounded-full bg-emerald-300 px-6 py-3.5 font-semibold text-slate-950 hover:bg-emerald-200 hover:shadow-[0_0_20px_rgba(120,167,255,0.4)] transition hover:scale-[1.02]"
+      >
+        Conversar sobre seu projeto
+      </a>
+    </section>
+  </main>
+</RootLayout>

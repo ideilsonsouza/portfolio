@@ -1,0 +1,117 @@
+---
+import { Menu, X } from "lucide-astro";
+
+const links = [
+  { name: "Sobre", href: "#about" },
+  { name: "Experiência", href: "#experience" },
+  { name: "Especialidades", href: "#work" },
+  { name: "Contato", href: "#contact" },
+];
+---
+
+<header class="fixed inset-x-0 top-0 z-50 border-b border-white/8 bg-[#07111f]/85 backdrop-blur">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12">
+    <a href="#about" class="flex items-center gap-3 font-semibold text-white">
+      <span class="grid h-8 w-8 place-items-center rounded-lg border border-emerald-300/40 bg-emerald-300/10 font-mono text-xs text-emerald-300">
+        ID
+      </span>
+      Ideilson
+    </a>
+
+    <nav class="hidden items-center gap-7 md:flex" aria-label="Navegação principal">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="text-sm font-medium text-[var(--muted)] transition-colors hover:text-white hover:drop-shadow-[0_0_8px_rgba(120,167,255,0.4)]"
+          >
+            {link.name}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden items-center gap-4 md:flex">
+      <span class="hidden lg:inline-flex items-center gap-2 rounded-full border border-emerald-300/25 bg-emerald-300/10 px-3 py-1 font-mono text-xs text-emerald-300">
+        <span class="status-pulse">
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-300"></span>
+        </span>
+        Disponível
+      </span>
+
+      <a
+        href="#contact"
+        class="rounded-full bg-emerald-300 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-emerald-200 hover:shadow-[0_0_15px_rgba(120,167,255,0.4)]"
+      >
+        Vamos conversar
+      </a>
+    </div>
+
+    <button
+      id="menu-toggle"
+      type="button"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      class="grid h-10 w-10 place-items-center rounded-lg border border-white/10 text-white md:hidden"
+    >
+      <span id="menu-icon-open" class="block">
+        <Menu class="w-5 h-5" aria-hidden="true" />
+      </span>
+      <span id="menu-icon-close" class="hidden">
+        <X class="w-5 h-5" aria-hidden="true" />
+      </span>
+    </button>
+  </div>
+
+  <nav
+    id="mobile-menu"
+    class="hidden border-t border-white/8 bg-[#07111f] px-6 pb-5 pt-2 md:hidden"
+    aria-label="Navegação móvel"
+  >
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          class="mobile-nav-link block py-3 text-base text-slate-200 hover:text-emerald-300 transition"
+        >
+          {link.name}
+        </a>
+      ))
+    }
+  </nav>
+</header>
+
+<script>
+  const toggleBtn = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("menu-icon-open");
+  const iconClose = document.getElementById("menu-icon-close");
+  const mobileLinks = document.querySelectorAll(".mobile-nav-link");
+
+  function setMenu(isOpen: boolean) {
+    if (!toggleBtn || !mobileMenu || !iconOpen || !iconClose) return;
+    toggleBtn.setAttribute("aria-expanded", String(isOpen));
+    toggleBtn.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
+    if (isOpen) {
+      mobileMenu.classList.remove("hidden");
+      iconOpen.classList.add("hidden");
+      iconClose.classList.remove("hidden");
+    } else {
+      mobileMenu.classList.add("hidden");
+      iconOpen.classList.remove("hidden");
+      iconClose.classList.add("hidden");
+    }
+  }
+
+  toggleBtn?.addEventListener("click", () => {
+    const isCurrentlyOpen = toggleBtn.getAttribute("aria-expanded") === "true";
+    setMenu(!isCurrentlyOpen);
+  });
+
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      setMenu(false);
+    });
+  });
+</script>

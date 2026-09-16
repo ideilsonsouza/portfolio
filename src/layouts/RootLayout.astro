@@ -1,0 +1,78 @@
+---
+import "../styles/globals.css";
+import FloatingWhatsApp from "../components/sections/FloatingWhatsApp.astro";
+import { siteName as defaultSiteName, siteUrl } from "../lib/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+}
+
+const {
+  title = defaultSiteName,
+  description = "Ideilson é engenheiro de software especializado em sistemas escaláveis, dados, integrações, Rust, Go e Node.js.",
+  canonicalPath = "/",
+} = Astro.props;
+
+const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
+---
+
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="application-name" content="Ideilson" />
+    <meta
+      name="keywords"
+      content="engenheiro de software, desenvolvedor full stack, arquitetura de software, Rust, Go, Node.js, integrações, sistemas escaláveis, dados"
+    />
+    <meta name="author" content="Ideilson" />
+    <meta name="creator" content="Ideilson" />
+    <meta name="publisher" content="Ideilson" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={defaultSiteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+
+    <!-- Google Fonts: Geist & Geist Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-full">
+    <a
+      href="#about"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-5 focus:top-5 focus:z-[60] focus:rounded focus:bg-emerald-300 focus:px-4 focus:py-2 focus:text-slate-950"
+    >
+      Pular para o conteúdo
+    </a>
+
+    <slot />
+
+    <FloatingWhatsApp />
+
+    <script src="../scripts/reveal.ts"></script>
+    <script src="../scripts/parallax.ts"></script>
+  </body>
+</html>

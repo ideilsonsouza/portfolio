@@ -1,0 +1,76 @@
+---
+import { ArrowUpRight, Mail, MessageCircle } from "lucide-astro";
+
+const whatsappUrl =
+  "https://wa.me/5564992462048?text=Ol%C3%A1%20Ideilson%2C%20vim%20pelo%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar!";
+---
+
+<section
+  id="contact"
+  class="mx-auto max-w-7xl px-6 py-24 md:px-12"
+  aria-labelledby="contact-title"
+>
+  <div
+    data-reveal
+    class="relative overflow-hidden rounded-[2rem] border border-emerald-200/20 bg-[var(--surface)] p-8 shadow-2xl sm:p-12 lg:p-16"
+  >
+    <!-- Background subtle glow -->
+    <div
+      aria-hidden="true"
+      class="absolute -bottom-24 -right-24 -z-10 h-72 w-72 rounded-full bg-emerald-300/10 blur-[90px]"
+    >
+    </div>
+
+    <p class="eyebrow">Contato direto</p>
+    <div class="mt-5 grid gap-10 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
+      <div>
+        <h2
+          id="contact-title"
+          class="max-w-2xl text-4xl font-semibold tracking-[-.055em] text-white sm:text-5xl"
+        >
+          Seu sistema está pedindo uma arquitetura melhor?
+        </h2>
+        <p class="mt-6 max-w-xl text-lg leading-8 text-[var(--muted)]">
+          Vamos conversar sobre integrações, dados, produto ou uma operação que precisa ganhar escala e estabilidade.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3.5">
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noreferrer"
+          class="group inline-flex min-h-12 items-center justify-between rounded-full bg-emerald-300 px-6 font-semibold text-slate-950 transition-all duration-200 hover:bg-emerald-200 hover:shadow-[0_0_20px_rgba(120,167,255,0.45)] hover:scale-[1.01]"
+        >
+          <span>Falar no WhatsApp</span>
+          <MessageCircle
+            class="w-5 h-5 transition-transform duration-200 group-hover:scale-110"
+            aria-hidden="true"
+          />
+        </a>
+        <a
+          href="mailto:contato@icbox.com.br"
+          class="group inline-flex min-h-12 items-center justify-between rounded-full border border-white/15 bg-white/[0.02] px-6 font-semibold text-white transition-all duration-200 hover:border-emerald-300/50 hover:bg-white/5 hover:scale-[1.01]"
+        >
+          <span>Enviar e-mail</span>
+          <Mail
+            class="w-5 h-5 text-[var(--muted)] transition-colors duration-200 group-hover:text-emerald-300"
+            aria-hidden="true"
+          />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/ideilson/"
+          target="_blank"
+          rel="noreferrer"
+          class="group inline-flex min-h-12 items-center justify-between rounded-full border border-white/15 bg-white/[0.02] px-6 font-semibold text-white transition-all duration-200 hover:border-emerald-300/50 hover:bg-white/5 hover:scale-[1.01]"
+        >
+          <span>Conectar no LinkedIn</span>
+          <ArrowUpRight
+            class="w-5 h-5 text-[var(--muted)] transition-all duration-200 group-hover:text-emerald-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            aria-hidden="true"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

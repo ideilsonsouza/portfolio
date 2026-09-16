@@ -1,0 +1,62 @@
+---
+import RootLayout from "../layouts/RootLayout.astro";
+import Navbar from "../components/layout/Navbar.astro";
+import Hero from "../components/sections/Hero.astro";
+import Ribbon from "../components/sections/Ribbon.astro";
+import Experience from "../components/sections/Experience.astro";
+import Projects from "../components/sections/Projects.astro";
+import Contact from "../components/sections/Contact.astro";
+import { siteUrl } from "../lib/site";
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ideilson",
+  url: siteUrl.toString(),
+  jobTitle: "Senior Software Engineer",
+  sameAs: [
+    "https://github.com/ideilsondev",
+    "https://www.linkedin.com/in/ideilson/",
+  ],
+  knowsAbout: [
+    "Software architecture",
+    "Distributed systems",
+    "Rust",
+    "Go",
+    "Node.js",
+    "Data integration",
+  ],
+};
+
+const currentYear = new Date().getFullYear();
+---
+
+<RootLayout>
+  <main>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
+    <Navbar />
+    <Hero />
+    <Ribbon />
+    <Experience />
+    <Projects />
+    <Contact />
+    <footer class="border-t border-white/10">
+      <div
+        class="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-8 text-sm text-[var(--faint)] md:flex-row md:justify-between md:px-12"
+      >
+        <p>© {currentYear} Ideilson. Todos os direitos reservados.</p>
+        <a
+          class="hover:text-white transition"
+          href="https://github.com/ideilsondev"
+          target="_blank"
+          rel="noreferrer"
+        >
+          github.com/ideilsondev
+        </a>
+      </div>
+    </footer>
+  </main>
+</RootLayout>

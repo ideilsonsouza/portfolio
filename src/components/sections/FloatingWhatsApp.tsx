@@ -1,3 +1,0 @@
-import { MessageCircle } from "lucide-react";
-const whatsappUrl="https://wa.me/5564992462048?text=Ol%C3%A1%20Ideilson%2C%20vim%20pelo%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar!";
-export function FloatingWhatsApp(){return <a href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Iniciar uma conversa no WhatsApp" className="fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full bg-emerald-300 text-slate-950 shadow-lg shadow-emerald-950/50 transition hover:scale-105 hover:bg-emerald-200 focus-visible:outline-offset-2"><MessageCircle size={25} aria-hidden="true"/></a>}
