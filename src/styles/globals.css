@@ -1,33 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  /* Pickfast Deep Navy & Canvas */
-  --canvas: #080d16;
-  --surface: #0e1724;
-  --surface-card: #132032;
-  --surface-hover: #1a2c42;
-  --ink: #f4f7fa;
-  --muted: #8a9aaa;
-  --faint: #5a6e82;
+  /* Pickfast Light Theme Tokens */
+  --canvas: #f4f7fa;            /* Pickfast Cream Canvas */
+  --paper: #ffffff;             /* Pure White Surface */
+  --surface: #ffffff;
+  --surface-2: #eef3f7;         /* Subtle Section Tint */
+  --surface-3: #e1e8ef;
+  --navy: #142638;              /* Pickfast Navy — Títulos & Estrutura */
+  --ink: #293a4a;               /* Pickfast Deep Sea — Texto Principal */
+  --muted: #607486;             /* Pickfast Muted Slate */
+  --faint: #8a9aaa;             /* Pickfast Subtle Gray */
 
   /* Pickfast Signature Pigments */
   --lava: #ff6c2c;              /* Pickfast Lava/Tomato — Alta Energia & Ação */
-  --lava-hover: #ff8248;
-  --lava-glow: rgba(255, 108, 44, 0.35);
-  
+  --lava-hover: #e8591a;
+  --lava-glow: rgba(255, 108, 44, 0.28);
+
   --coastal: #179bd7;           /* Pickfast Coastal Blue — Conectividade & Tech */
-  --coastal-hover: #33aee6;
-  --coastal-glow: rgba(23, 155, 215, 0.3);
+  --coastal-hover: #0f7db0;
+  --coastal-glow: rgba(23, 155, 215, 0.25);
 
   --basil: #198754;             /* Pickfast Basil — Telemetria & Online */
-  --basil-glow: rgba(25, 135, 84, 0.3);
+  --basil-glow: rgba(25, 135, 84, 0.25);
 
-  --amber: #f59e0b;             /* Pickfast Amber/Yellow — Atenção & Inteligência */
-  --amber-glow: rgba(245, 158, 11, 0.3);
+  --amber: #f59e0b;             /* Pickfast Amber — Atenção & Inteligência */
+  --amber-glow: rgba(245, 158, 11, 0.25);
 
   /* Lines & Borders */
-  --line: rgba(23, 155, 215, 0.16);
-  --line-warm: rgba(255, 108, 44, 0.22);
+  --border: #d7e1ea;            /* Pickfast Fog Border */
+  --line: #d7e1ea;
   --signal: var(--coastal);
 
   /* Typography */
@@ -58,8 +60,8 @@ body {
 }
 
 ::selection {
-  background: rgba(255, 108, 44, 0.3);
-  color: #fff;
+  background: rgba(255, 108, 44, 0.25);
+  color: var(--navy);
 }
 
 :focus-visible {
@@ -67,11 +69,12 @@ body {
   outline-offset: 4px;
 }
 
+/* Malha sutil no tema claro */
 .site-grid {
-  background-image: linear-gradient(rgba(23, 155, 215, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(23, 155, 215, 0.06) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(20, 38, 56, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 38, 56, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
-  mask-image: linear-gradient(to bottom, #000, transparent 82%);
+  mask-image: linear-gradient(to bottom, #000, transparent 85%);
 }
 
 .eyebrow {
@@ -84,7 +87,7 @@ body {
 }
 
 .section-rule {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--border);
 }
 
 /* =========================================
@@ -92,7 +95,7 @@ body {
    ========================================= */
 .reveal-ready [data-reveal] {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(20px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--reveal-delay, 0ms);
@@ -116,16 +119,16 @@ body {
 .ribbon-container {
   overflow: hidden;
   user-select: none;
+  background: var(--navy);
   border-top: 1px solid rgba(255, 108, 44, 0.3);
   border-bottom: 1px solid rgba(255, 108, 44, 0.3);
-  background: linear-gradient(90deg, #101c2c 0%, #162438 50%, #101c2c 100%);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 108, 44, 0.2);
+  box-shadow: 0 8px 24px -4px rgba(20, 38, 56, 0.15);
 }
 
 .ribbon-track {
   display: flex;
   width: max-content;
-  animation: ribbon-scroll 32s linear infinite;
+  animation: ribbon-scroll 34s linear infinite;
 }
 
 .ribbon-track:hover {
@@ -136,7 +139,7 @@ body {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  padding: 0.95rem 1.6rem;
+  padding: 1rem 1.6rem;
   white-space: nowrap;
   font-family: var(--font-geist-mono), monospace;
   font-size: 0.78rem;
@@ -164,28 +167,21 @@ body {
 }
 
 /* =========================================
-   CARDS INTERATIVOS COM GLOW E TRANSIÇÕES
+   CARDS INTERATIVOS COM ELEVAÇÃO
    ========================================= */
 .interactive-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(20, 38, 56, 0.04);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.25s ease,
-              border-color 0.25s ease,
-              box-shadow 0.25s ease;
+              box-shadow 0.25s ease,
+              border-color 0.25s ease;
 }
 
 .interactive-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(23, 155, 215, 0.45) !important;
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.65),
-              0 0 25px 0 rgba(23, 155, 215, 0.15);
-}
-
-/* Card com Acento Lava */
-.card-lava-hover:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 108, 44, 0.5) !important;
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.65),
-              0 0 25px 0 rgba(255, 108, 44, 0.18);
+  border-color: var(--coastal) !important;
+  box-shadow: 0 14px 32px -6px rgba(20, 38, 56, 0.12);
 }
 
 /* Pulsing Status Dot Verde Basil (Pickfast) */
@@ -225,13 +221,13 @@ body {
   background-color: var(--lava);
   color: #ffffff;
   font-weight: 600;
-  box-shadow: 0 4px 18px rgba(255, 108, 44, 0.35);
+  box-shadow: 0 4px 16px rgba(255, 108, 44, 0.3);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-lava:hover {
   background-color: var(--lava-hover);
-  box-shadow: 0 6px 24px rgba(255, 108, 44, 0.5);
+  box-shadow: 0 6px 22px rgba(255, 108, 44, 0.45);
   transform: translateY(-1px);
 }
 

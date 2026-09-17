@@ -2,11 +2,17 @@
 import RootLayout from "../../layouts/RootLayout.astro";
 import {
   ArrowLeft,
+  ArrowRight,
   ArrowUpRight,
   Bell,
   CheckCircle2,
   CircleAlert,
+  Cpu,
+  Layers,
+  MessageCircle,
   MoreHorizontal,
+  Sparkles,
+  Workflow,
 } from "lucide-astro";
 import { demos, type DemoSlug } from "../../lib/demos";
 
@@ -22,25 +28,28 @@ const { demo } = Astro.props;
 
 const accent =
   demo.accent === "emerald"
-    ? "text-emerald-400 bg-emerald-500/10 border-emerald-500/30"
+    ? "text-[#198754] bg-[#ebf5ef] border-[#198754]/30"
     : demo.accent === "sky"
-      ? "text-[var(--coastal)] bg-[var(--coastal)]/10 border-[var(--coastal)]/30"
-      : "text-[var(--amber)] bg-[var(--amber)]/10 border-[var(--amber)]/30";
+      ? "text-[#0f7db0] bg-[#e9f6fc] border-[#179bd7]/30"
+      : "text-[#d97706] bg-[#fffbeb] border-[#f59e0b]/30";
+
+const whatsappUrl = `https://wa.me/5564992462048?text=Ol%C3%A1%20Ideilson%2C%20vi%20a%20aplica%C3%A7%C3%A3o%20${encodeURIComponent(demo.name)}%20no%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar!`;
 ---
 
 <RootLayout
-  title={`${demo.name} — demonstração`}
+  title={`${demo.name} — Demonstração & Arquitetura`}
   description={demo.summary}
   canonicalPath={`/demos/${slug}`}
 >
   <main class="min-h-screen bg-[var(--canvas)]">
-    <header class="border-b border-white/10 bg-[#080d16]/80 backdrop-blur sticky top-0 z-40">
+    <!-- Header Topo -->
+    <header class="border-b border-[#d7e1ea] bg-white/90 backdrop-blur sticky top-0 z-40">
       <div
-        class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-12"
+        class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12"
       >
         <a
           href="/"
-          class="inline-flex items-center gap-2 text-sm font-medium text-[var(--muted)] hover:text-white transition group"
+          class="inline-flex items-center gap-2 text-sm font-medium text-[#607486] hover:text-[#142638] transition group"
         >
           <ArrowLeft class="w-4 h-4 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
           Voltar ao portfólio
@@ -50,104 +59,118 @@ const accent =
             <span class="relative inline-flex h-2 w-2 rounded-full bg-[#198754]"></span>
           </span>
           <p
-            class="font-mono text-xs font-semibold uppercase tracking-[.14em] text-[var(--coastal)]"
+            class="font-mono text-xs font-semibold uppercase tracking-[.14em] text-[#0f7db0]"
           >
-            Interface demonstrativa
+            Sandbox Arquitetural & Produção
           </p>
         </div>
       </div>
     </header>
 
-    <section class="mx-auto max-w-7xl px-6 py-16 md:px-12 lg:py-24">
+    <!-- Hero do Demo -->
+    <section class="mx-auto max-w-7xl px-6 py-16 md:px-12 lg:py-20">
       <p class="eyebrow" data-reveal>{demo.eyebrow}</p>
       <div
-        class="mt-5 grid gap-12 lg:grid-cols-[.82fr_1.18fr] lg:items-end"
+        class="mt-5 grid gap-12 lg:grid-cols-[.85fr_1.15fr] lg:items-end"
       >
         <div data-reveal data-reveal-delay="100">
           <h1
-            class="max-w-xl text-4xl font-semibold tracking-[-.055em] text-white sm:text-5xl"
+            class="max-w-xl text-4xl font-semibold tracking-[-.055em] text-[#142638] sm:text-5xl"
           >
             {demo.title}
           </h1>
-          <p class="mt-6 max-w-xl text-lg leading-8 text-[var(--muted)]">
+          <p class="mt-6 max-w-xl text-lg leading-8 text-[#607486]">
             {demo.summary}
           </p>
-          <p
-            class="mt-6 inline-block font-mono text-xs font-semibold uppercase tracking-[.08em] text-[var(--lava)] border border-[var(--lava)]/25 bg-[var(--lava)]/10 px-3 py-1 rounded-md"
-          >
-            {demo.pill}
-          </p>
-          <div class="mt-9">
-            <a
-              href="#contact"
-              class="btn-lava inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold transition group"
+          <div class="mt-6 flex flex-wrap items-center gap-2">
+            <span
+              class="font-mono text-xs font-semibold uppercase tracking-[.08em] text-[var(--lava)] border border-[var(--lava)]/25 bg-[#fff4ed] px-3 py-1 rounded-md"
             >
-              Quero uma aplicação assim
+              {demo.pill}
+            </span>
+          </div>
+          <div class="mt-9 flex flex-wrap items-center gap-4">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              class="btn-lava inline-flex items-center gap-2 rounded-full px-7 py-3 font-semibold transition group shadow-md hover:shadow-lg"
+            >
+              <span>Quero uma aplicação assim</span>
               <ArrowUpRight class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+            </a>
+            <a
+              href="#modulos"
+              class="inline-flex items-center gap-2 rounded-full border border-[#d7e1ea] bg-white px-6 py-3 font-semibold text-[#142638] hover:border-[var(--coastal)] hover:text-[var(--coastal)] transition"
+            >
+              <Layers class="w-4 h-4" />
+              Ver módulos do sistema
             </a>
           </div>
         </div>
 
+        <!-- Janela Interativa Mockup Pickfast Style -->
         <section
           data-reveal
           data-reveal-delay="200"
           data-parallax
           data-parallax-speed="-0.03"
           aria-label={`Prévia da aplicação ${demo.name}`}
-          class="overflow-hidden rounded-3xl border border-white/10 bg-[#0e1724] shadow-2xl shadow-black/50"
+          class="overflow-hidden rounded-3xl border border-[#d7e1ea] bg-white shadow-xl shadow-slate-200/80"
         >
+          <!-- Window Titlebar -->
           <div
-            class="flex items-center justify-between border-b border-white/10 px-5 py-4 bg-[#080d16]/50"
+            class="flex items-center justify-between border-b border-[#d7e1ea] px-5 py-4 bg-[#f4f7fa]"
           >
             <div class="flex items-center gap-3">
               <span class="h-3 w-3 rounded-full bg-[#ff6c2c]"></span>
               <span class="h-3 w-3 rounded-full bg-[#f59e0b]"></span>
               <span class="h-3 w-3 rounded-full bg-[#198754]"></span>
-              <p class="ml-2 text-sm font-semibold text-white">{demo.name}</p>
+              <p class="ml-2 text-sm font-semibold text-[#142638]">{demo.name}</p>
             </div>
             <button
               type="button"
               aria-label="Mais opções"
-              class="rounded-lg p-2 text-[var(--muted)] hover:bg-white/5 hover:text-white transition"
+              class="rounded-lg p-2 text-[#607486] hover:bg-slate-200/60 transition"
             >
               <MoreHorizontal class="w-5 h-5" aria-hidden="true" />
             </button>
           </div>
 
-          <div class="grid gap-4 p-5 sm:grid-cols-[1.1fr_.9fr]">
+          <div class="grid gap-4 p-5 sm:grid-cols-[1.1fr_.9fr] bg-white">
             <div
-              class="interactive-card rounded-2xl border border-white/10 bg-white/[0.02] p-5"
+              class="interactive-card rounded-2xl border border-[#d7e1ea] bg-[#f4f7fa] p-5 shadow-none"
             >
               <p
-                class="font-mono text-[.65rem] font-bold uppercase tracking-[.1em] text-[var(--faint)]"
+                class="font-mono text-[.68rem] font-bold uppercase tracking-[.1em] text-[#607486]"
               >
                 {demo.metricLabel}
               </p>
               <p
-                class="mt-3 text-4xl font-semibold tracking-[-.05em] text-white"
+                class="mt-3 text-4xl font-semibold tracking-[-.05em] text-[#142638]"
               >
                 {demo.metric}
               </p>
               <div
                 class="mt-7 flex h-16 items-end gap-1.5"
-                aria-label="Gráfico ilustrativo"
+                aria-label="Gráfico ilustrativo de desempenho"
               >
-                <span class="h-[35%] flex-1 rounded-t bg-white/10 transition-all duration-500 hover:h-[45%]"></span>
-                <span class="h-[58%] flex-1 rounded-t bg-[var(--coastal)]/30 transition-all duration-500 hover:h-[65%]"></span>
-                <span class="h-[46%] flex-1 rounded-t bg-[var(--coastal)]/50 transition-all duration-500 hover:h-[55%]"></span>
-                <span class="h-[80%] flex-1 rounded-t bg-[var(--lava)]/70 transition-all duration-500 hover:h-[88%]"></span>
-                <span class="h-[68%] flex-1 rounded-t bg-[var(--lava)] transition-all duration-500 hover:h-[75%]"></span>
+                <span class="h-[35%] flex-1 rounded-t bg-[#d7e1ea] transition-all duration-500 hover:h-[45%]"></span>
+                <span class="h-[58%] flex-1 rounded-t bg-[#179bd7]/40 transition-all duration-500 hover:h-[65%]"></span>
+                <span class="h-[46%] flex-1 rounded-t bg-[#179bd7]/60 transition-all duration-500 hover:h-[55%]"></span>
+                <span class="h-[80%] flex-1 rounded-t bg-[#ff6c2c]/70 transition-all duration-500 hover:h-[88%]"></span>
+                <span class="h-[68%] flex-1 rounded-t bg-[#ff6c2c] transition-all duration-500 hover:h-[75%]"></span>
                 <span class="h-[92%] flex-1 rounded-t bg-[#198754] transition-all duration-500 hover:h-[98%]"></span>
               </div>
             </div>
 
             <div
-              class="interactive-card rounded-2xl border border-white/10 bg-white/[0.02] p-5"
+              class="interactive-card rounded-2xl border border-[#d7e1ea] bg-[#f4f7fa] p-5 shadow-none"
             >
               <p
-                class="font-mono text-[.65rem] font-bold uppercase tracking-[.1em] text-[var(--faint)]"
+                class="font-mono text-[.68rem] font-bold uppercase tracking-[.1em] text-[#607486]"
               >
-                Estado agora
+                Estado operacional
               </p>
               <div class={`mt-4 rounded-xl border p-3 ${accent}`}>
                 <div class="flex gap-2 text-sm font-semibold">
@@ -156,30 +179,30 @@ const accent =
                 </div>
               </div>
               <div
-                class="mt-3 flex items-center gap-2 text-sm text-[var(--muted)]"
+                class="mt-3 flex items-center gap-2 text-sm text-[#607486]"
               >
-                <Bell class="w-4 h-4 shrink-0 text-[var(--amber)]" aria-hidden="true" />
+                <Bell class="w-4 h-4 shrink-0 text-[#d97706]" aria-hidden="true" />
                 {demo.secondary}
               </div>
             </div>
 
             <div
-              class="sm:col-span-2 rounded-2xl border border-white/10 bg-white/[0.02] p-2"
+              class="sm:col-span-2 rounded-2xl border border-[#d7e1ea] bg-[#f4f7fa] p-2"
             >
               {
                 demo.items.map((item, index) => (
-                  <div class="flex items-center justify-between gap-3 rounded-xl px-3 py-3 text-sm transition hover:bg-white/[0.02]">
+                  <div class="flex items-center justify-between gap-3 rounded-xl px-3 py-3 text-sm transition hover:bg-white">
                     <div class="flex items-center gap-3">
                       <span
-                        class={`grid h-7 w-7 place-items-center rounded-lg text-xs font-bold ${index === 2 ? "bg-[var(--amber)]/15 text-[var(--amber)]" : "bg-[var(--coastal)]/15 text-[var(--coastal)]"}`}
+                        class={`grid h-7 w-7 place-items-center rounded-lg text-xs font-bold ${index === 2 ? "bg-[#fffbeb] text-[#d97706] border border-[#f59e0b]/30" : "bg-[#e9f6fc] text-[#0f7db0] border border-[#179bd7]/30"}`}
                       >
                         {index + 1}
                       </span>
-                      <span class="text-slate-200">{item}</span>
+                      <span class="text-[#293a4a] font-medium">{item}</span>
                     </div>
                     {index === 2 ? (
                       <CircleAlert
-                        class="w-4 h-4 text-[var(--amber)] shrink-0"
+                        class="w-4 h-4 text-[#d97706] shrink-0"
                         aria-label="Atenção"
                       />
                     ) : (
@@ -197,16 +220,176 @@ const accent =
       </div>
     </section>
 
-    <section id="contact" class="border-t border-white/10 px-6 py-14 text-center" data-reveal>
-      <p class="text-[var(--muted)]">
-        Esta interface usa dados fictícios para demonstrar uma direção de produto.
-      </p>
-      <a
-        href="/#contact"
-        class="btn-lava mt-6 inline-flex rounded-full px-7 py-3.5 font-semibold text-white transition"
-      >
-        Conversar sobre seu projeto
-      </a>
+    <!-- SEÇÃO DE MÓDULOS DETALHADOS -->
+    <section
+      id="modulos"
+      class="border-t border-[#d7e1ea] bg-white py-20 lg:py-28"
+      aria-labelledby="modules-title"
+    >
+      <div class="mx-auto max-w-7xl px-6 md:px-12">
+        <div data-reveal class="max-w-3xl">
+          <p class="eyebrow flex items-center gap-2 text-[var(--lava)]">
+            <Layers class="w-4 h-4" />
+            Engenharia & Arquitetura
+          </p>
+          <h2
+            id="modules-title"
+            class="mt-3 text-3xl font-semibold tracking-[-.05em] text-[#142638] sm:text-4xl lg:text-5xl"
+          >
+            Módulos independentes construídos para escala
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-[#607486]">
+            Cada componente é desenhado com fronteiras de domínio rígidas, desacoplamento e tecnologias adequadas a cada gargalo operacional.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-8 md:grid-cols-2">
+          {
+            demo.modules.map((mod, idx) => (
+              <article
+                data-reveal
+                data-reveal-delay={String(idx * 100)}
+                class="group relative flex flex-col justify-between rounded-3xl border border-[#d7e1ea] bg-[#f4f7fa] p-8 shadow-sm transition-all duration-300 hover:border-[var(--coastal)] hover:bg-white hover:shadow-xl hover:-translate-y-1"
+              >
+                <div>
+                  <div class="flex items-center justify-between gap-3">
+                    <span class="inline-flex items-center gap-1.5 rounded-full border border-[#179bd7]/30 bg-[#e9f6fc] px-3 py-1 font-mono text-[.72rem] font-bold uppercase tracking-[.08em] text-[#0f7db0]">
+                      <Cpu class="w-3 h-3 text-[var(--coastal)]" />
+                      {mod.tag}
+                    </span>
+                    <span class="font-mono text-xs font-semibold text-[#8a9aaa]">
+                      Módulo 0{idx + 1}
+                    </span>
+                  </div>
+
+                  <h3 class="mt-5 text-2xl font-semibold tracking-tight text-[#142638] group-hover:text-[var(--lava)] transition-colors">
+                    {mod.title}
+                  </h3>
+
+                  <p class="mt-4 text-base leading-7 text-[#607486]">
+                    {mod.description}
+                  </p>
+
+                  <div class="mt-6 border-t border-[#d7e1ea]/70 pt-6">
+                    <p class="font-mono text-xs font-bold uppercase tracking-[.08em] text-[#142638]">
+                      Capacidades & Garantias:
+                    </p>
+                    <ul class="mt-3 space-y-2.5">
+                      {mod.highlights.map((highlight) => (
+                        <li class="flex items-start gap-2.5 text-sm text-[#293a4a]">
+                          <CheckCircle2 class="w-4 h-4 shrink-0 text-[#198754] mt-0.5" />
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="mt-8 border-t border-[#d7e1ea] pt-5">
+                  <p class="font-mono text-[.7rem] font-bold uppercase tracking-[.1em] text-[#607486]">
+                    Stack Tecnológica:
+                  </p>
+                  <p class="mt-1 font-mono text-xs font-semibold text-[#142638] bg-white border border-[#d7e1ea] px-3 py-1.5 rounded-lg inline-block group-hover:border-[var(--coastal)]/50 transition">
+                    {mod.techStack}
+                  </p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO DE FLUXO PONTA A PONTA -->
+    <section
+      class="border-t border-[#d7e1ea] bg-[#f4f7fa] py-20 lg:py-28"
+      aria-labelledby="flow-title"
+    >
+      <div class="mx-auto max-w-7xl px-6 md:px-12">
+        <div data-reveal class="max-w-2xl">
+          <p class="eyebrow flex items-center gap-2 text-[var(--coastal)]">
+            <Workflow class="w-4 h-4" />
+            Fluxo de Execução
+          </p>
+          <h2
+            id="flow-title"
+            class="mt-3 text-3xl font-semibold tracking-[-.05em] text-[#142638] sm:text-4xl"
+          >
+            Como os dados e eventos circulam na solução
+          </h2>
+          <p class="mt-4 text-base leading-7 text-[#607486]">
+            Uma visão sequencial da jornada de uma requisição, desde o sinal de entrada até a confirmação e arquivamento seguro.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {
+            demo.workflowSteps.map((ws, i) => (
+              <div
+                data-reveal
+                data-reveal-delay={String(i * 100)}
+                class="relative rounded-2xl border border-[#d7e1ea] bg-white p-6 shadow-sm flex flex-col justify-between"
+              >
+                <div>
+                  <div class="flex items-center justify-between">
+                    <span class="font-mono text-2xl font-bold tracking-tight text-[var(--lava)]">
+                      {ws.step}
+                    </span>
+                    {i < 3 && (
+                      <ArrowRight class="hidden lg:block w-4 h-4 text-[#8a9aaa]" />
+                    )}
+                  </div>
+                  <h3 class="mt-4 text-lg font-semibold text-[#142638]">
+                    {ws.title}
+                  </h3>
+                  <p class="mt-3 text-sm leading-6 text-[#607486]">
+                    {ws.description}
+                  </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-[#f4f7fa]">
+                  <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#198754]">
+                    <Sparkles class="w-3.5 h-3.5" />
+                    Etapa validada
+                  </span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Rodapé de Contato da Demonstração -->
+    <section class="border-t border-[#d7e1ea] bg-[#142638] px-6 py-16 text-center text-white" data-reveal>
+      <div class="mx-auto max-w-3xl">
+        <p class="font-mono text-xs font-bold uppercase tracking-[.14em] text-[var(--lava)]">
+          Próximo passo
+        </p>
+        <h2 class="mt-3 text-3xl font-semibold tracking-[-.05em] text-white sm:text-4xl">
+          Quer desenhar ou implementar uma solução como {demo.name}?
+        </h2>
+        <p class="mt-4 text-base text-[#d7e1ea]">
+          Podemos avaliar seu gargalo atual, desenhar a arquitetura ideal e criar uma prova de conceito funcional sem arriscar a operação existente.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex items-center gap-2 rounded-full bg-[#198754] px-7 py-3.5 font-semibold text-white shadow-[0_4px_18px_rgba(25,135,84,0.35)] transition-all duration-200 hover:bg-[#157347] hover:scale-[1.02]"
+          >
+            <MessageCircle class="w-5 h-5" />
+            <span>Falar no WhatsApp</span>
+          </a>
+          <a
+            href="/#contact"
+            class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 font-semibold text-white transition hover:bg-white/10 hover:border-white/40"
+          >
+            <span>Outras formas de contato</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+        </div>
+      </div>
     </section>
   </main>
 </RootLayout>

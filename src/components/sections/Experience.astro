@@ -1,68 +1,140 @@
 ---
+import { CheckCircle2, TrendingUp } from "lucide-astro";
+
 const experiences = [
   {
     period: "2023 — hoje",
-    role: "Senior Software Engineer",
+    role: "Senior Software Engineer & Architect",
     company: "ICBOX",
     description:
-      "Liderança técnica para microserviços e sistemas distribuídos, unindo Rust, Go, Node.js e C# a práticas de observabilidade e performance.",
-    tech: ["Rust", "Go", "Node.js", "PostgreSQL", "Docker", "Sagas"],
+      "Liderança de arquitetura para microsserviços distribuídos de alta volumetria e barramentos de mensageria assíncrona. Implementação de padrões de resiliência (Sagas, Circuit Breaker, Outbox Pattern) em Rust, Go e Node.js com telemetria avançada.",
+    metrics: [
+      "+500k eventos/dia processados",
+      "Latência P99 reduzida para < 120ms",
+      "99.98% de disponibilidade operacional",
+    ],
+    tech: ["Rust", "Go", "Node.js", "PostgreSQL", "Docker", "Sagas", "OpenTelemetry"],
   },
   {
     period: "2020 — 2023",
-    role: "Full-stack Developer",
-    company: "Consultoria independente",
+    role: "Tech Lead & Full-Stack Architect",
+    company: "Consultoria e Projetos B2B",
     description:
-      "Produtos SaaS multi-tenant, integrações de pagamentos e painéis analíticos para operações que dependem de dados confiáveis.",
-    tech: ["React", "FastAPI", "NestJS", "PIX", "Webhooks"],
+      "Desenvolvimento de produtos SaaS multi-tenant, gateways de pagamentos e conciliação bancária automatizada para operações críticas. Automação de fluxos fiscais e eliminação de processos operacionais manuais em clientes corporativos.",
+    metrics: [
+      "Redução de 70% em tempo de fechamento contábil",
+      "Integração de PIX & Webhooks com conciliação automática",
+      "Arquitetura escalável multi-tenant sem vazamento de dados",
+    ],
+    tech: ["TypeScript", "React", "FastAPI", "NestJS", "PIX / Asaas", "Redis", "PostgreSQL RLS"],
+  },
+  {
+    period: "2018 — 2020",
+    role: "Software Engineer",
+    company: "Engenharia de Sistemas & Automação",
+    description:
+      "Desenvolvimento de sistemas supervisórios locais (SCADA), leitura de telemetria em Controladores Lógicos Programáveis (CLPs) via Modbus e aplicações desktop locais de alta estabilidade para chão de fábrica.",
+    metrics: [
+      "Comunicação direta via Modbus TCP/RTU com zero perda de pacotes",
+      "Operação local 100% offline-first com sincronização resiliente",
+      "Respostas de hardware em menos de 50ms",
+    ],
+    tech: ["Rust", "C/Embedded", "Modbus", "SQLite (WAL)", "Tauri / Desktop", "Linux"],
   },
 ];
 ---
 
 <section
   id="experience"
-  class="section-rule mx-auto max-w-7xl px-6 py-24 md:px-12"
+  class="border-y border-[#d7e1ea] bg-white py-24 md:py-32"
   aria-labelledby="experience-title"
 >
-  <div class="grid gap-10 lg:grid-cols-[.72fr_1.28fr]">
-    <div data-reveal>
-      <p class="eyebrow">Trajetória</p>
-      <h2
-        id="experience-title"
-        class="mt-4 text-3xl font-semibold tracking-[-.045em] text-white sm:text-4xl"
-      >
-        Experiência para decisões que não podem falhar.
-      </h2>
-    </div>
+  <div class="mx-auto max-w-7xl px-6 md:px-12">
+    <div class="grid gap-12 lg:grid-cols-[.78fr_1.22fr] lg:items-start">
+      <!-- Coluna da Esquerda: Contexto Fixo no Scroll -->
+      <div data-reveal class="lg:sticky lg:top-28 lg:self-start">
+        <p class="eyebrow flex items-center gap-2 text-[var(--lava)]">
+          <TrendingUp class="w-4 h-4" />
+          Trajetória & Resultados
+        </p>
+        <h2
+          id="experience-title"
+          class="mt-3 text-3xl font-semibold tracking-[-.045em] text-[#142638] sm:text-4xl lg:text-5xl"
+        >
+          Experiência comprovada onde instabilidade custa caro.
+        </h2>
+        <p class="mt-6 text-base leading-7 text-[#607486]">
+          Do chão de fábrica à nuvem distribuída: atuação direta em sistemas que lidam com dinheiro, notas fiscais, sensores e decisões operacionais imediatas.
+        </p>
 
-    <ol class="divide-y divide-white/10 border-t border-white/10">
-      {
-        experiences.map((item, index) => (
-          <li
-            data-reveal
-            data-reveal-delay={(index + 1) * 120}
-            class="group grid gap-4 py-8 sm:grid-cols-[9rem_1fr] transition-colors hover:bg-white/[0.015] px-4 -mx-4 rounded-xl"
-          >
-            <p class="font-mono text-xs font-semibold uppercase tracking-[.08em] text-[var(--faint)] pt-1">
-              {item.period}
-            </p>
-            <div>
-              <h3 class="text-xl font-semibold text-white transition-colors group-hover:text-emerald-200">
-                {item.role}{" "}
-                <span class="text-emerald-300">/ {item.company}</span>
-              </h3>
-              <p class="mt-3 leading-7 text-[var(--muted)]">{item.description}</p>
-              <ul class="mt-5 flex flex-wrap gap-2">
-                {item.tech.map((tech) => (
-                  <li class="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-xs text-slate-300 transition-colors group-hover:border-emerald-300/30 group-hover:text-emerald-200">
-                    {tech}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </li>
-        ))
-      }
-    </ol>
+        <div class="mt-8 rounded-2xl border border-[#d7e1ea] bg-[#f4f7fa] p-5 shadow-sm">
+          <p class="font-mono text-xs font-bold uppercase tracking-[.1em] text-[#142638]">
+            Garantia de Engenharia
+          </p>
+          <p class="mt-2 text-sm leading-6 text-[#607486]">
+            Projetos desenhados com observabilidade nativa, testes rigorosos e documentação técnica pronta para continuidade do seu time.
+          </p>
+        </div>
+      </div>
+
+      <!-- Coluna da Direita: Cards com Espaçamento Generoso -->
+      <div class="flex flex-col gap-8">
+        {
+          experiences.map((item, index) => (
+            <article
+              data-reveal
+              data-reveal-delay={String((index + 1) * 100)}
+              class="interactive-card rounded-3xl border border-[#d7e1ea] bg-[#f8fafc] p-7 sm:p-8 shadow-sm transition-all duration-300 hover:bg-white hover:border-[var(--coastal)] hover:shadow-xl"
+            >
+              <!-- Cabeçalho do Card -->
+              <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#d7e1ea]/70 pb-4">
+                <span class="inline-flex items-center gap-2 rounded-full border border-[#179bd7]/25 bg-[#e9f6fc] px-3.5 py-1 font-mono text-xs font-bold text-[#0f7db0]">
+                  <span class="h-2 w-2 rounded-full bg-[#179bd7]"></span>
+                  {item.period}
+                </span>
+                <span class="font-mono text-xs font-semibold text-[#8a9aaa]">
+                  Marco 0{index + 1}
+                </span>
+              </div>
+
+              <!-- Conteúdo Principal -->
+              <div class="mt-5">
+                <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#142638]">
+                  {item.role}{" "}
+                  <span class="text-[var(--lava)] font-normal">/ {item.company}</span>
+                </h3>
+                <p class="mt-3 text-base leading-7 text-[#607486]">
+                  {item.description}
+                </p>
+
+                <!-- Caixa Destacada de Métricas de Impacto -->
+                <div class="mt-5 rounded-2xl border border-[#d7e1ea] bg-white p-4 shadow-2xs">
+                  <p class="font-mono text-[.68rem] font-bold uppercase tracking-[.1em] text-[#142638]">
+                    Impacto & Métricas Atingidas:
+                  </p>
+                  <ul class="mt-2.5 space-y-2">
+                    {item.metrics.map((metric) => (
+                      <li class="flex items-center gap-2.5 text-xs font-medium text-[#293a4a]">
+                        <CheckCircle2 class="w-4 h-4 shrink-0 text-[#198754]" />
+                        <span>{metric}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <!-- Chips da Tech Stack -->
+                <div class="mt-5 flex flex-wrap gap-2 pt-2">
+                  {item.tech.map((tech) => (
+                    <span class="rounded-lg border border-[#d7e1ea] bg-white px-3 py-1 font-mono text-xs font-medium text-[#293a4a] shadow-2xs">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
   </div>
 </section>

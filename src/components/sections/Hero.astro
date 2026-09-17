@@ -10,7 +10,7 @@ const whatsappUrl =
 <section id="about" class="relative isolate overflow-hidden pt-32 sm:pt-40">
   <div aria-hidden="true" class="site-grid absolute inset-0 -z-10"></div>
   
-  <!-- Aura de profundidade com Navy e Lava sutil -->
+  <!-- Auras sutis de iluminação no tema claro -->
   <div
     aria-hidden="true"
     class="absolute -right-40 top-12 -z-10 h-96 w-96 rounded-full bg-[var(--coastal)]/10 blur-[120px]"
@@ -18,7 +18,7 @@ const whatsappUrl =
   </div>
   <div
     aria-hidden="true"
-    class="absolute left-1/3 top-1/4 -z-10 h-64 w-64 rounded-full bg-[var(--lava)]/5 blur-[100px]"
+    class="absolute left-1/4 top-1/3 -z-10 h-64 w-64 rounded-full bg-[var(--lava)]/8 blur-[110px]"
   >
   </div>
 
@@ -26,11 +26,11 @@ const whatsappUrl =
     class="mx-auto grid max-w-7xl gap-14 px-6 pb-20 md:px-12 lg:grid-cols-[1.15fr_.85fr] lg:items-end lg:pb-28"
   >
     <div data-reveal>
-      <div class="mb-7 inline-flex items-center gap-3 rounded-full border border-[var(--coastal)]/25 bg-[var(--coastal)]/10 px-4 py-1.5">
+      <div class="mb-7 inline-flex items-center gap-3 rounded-full border border-[#179bd7]/25 bg-[#e9f6fc] px-4 py-1.5 shadow-sm">
         <span class="status-pulse-basil">
           <span class="relative inline-flex h-2 w-2 rounded-full bg-[#198754]"></span>
         </span>
-        <span class="font-mono text-xs font-bold uppercase tracking-[.14em] text-[var(--coastal)]">
+        <span class="font-mono text-xs font-bold uppercase tracking-[.14em] text-[#0f7db0]">
           Engenharia de software · Brasil
         </span>
       </div>
@@ -38,17 +38,17 @@ const whatsappUrl =
       <h1
         data-reveal
         data-reveal-delay="100"
-        class="max-w-4xl text-5xl font-semibold tracking-[-.06em] text-white sm:text-6xl lg:text-7xl"
+        class="max-w-4xl text-5xl font-semibold tracking-[-.06em] text-[#142638] sm:text-6xl lg:text-7xl"
       >
-        Sistemas que <span class="text-[var(--lava)] drop-shadow-[0_0_25px_rgba(255,108,44,0.35)]">aguentam</span> quando o negócio acelera.
+        Sistemas que <span class="text-[var(--lava)]">aguentam</span> quando o negócio acelera.
       </h1>
 
       <p
         data-reveal
         data-reveal-delay="200"
-        class="mt-8 max-w-2xl text-lg leading-8 text-[var(--muted)] sm:text-xl"
+        class="mt-8 max-w-2xl text-lg leading-8 text-[#607486] sm:text-xl"
       >
-        Ideilson é engenheiro de software focado em dados, integrações e arquitetura de produtos que precisam ser rápidos, observáveis e confiáveis.
+        Ideilson é engenheiro de software sênior focado em sistemas distribuídos, integrações críticas e arquiteturas de alta volumetria em Rust, Go e Node.js.
       </p>
 
       <div
@@ -67,12 +67,21 @@ const whatsappUrl =
         </a>
         <a
           href="#work"
-          class="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[var(--coastal)]/25 bg-white/[0.02] px-7 text-sm font-semibold text-white transition hover:border-[var(--coastal)] hover:bg-[var(--coastal)]/10 hover:shadow-[0_0_20px_rgba(23,155,215,0.2)]"
+          class="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#d7e1ea] bg-white px-7 text-sm font-semibold text-[#142638] shadow-sm transition hover:border-[var(--coastal)] hover:text-[var(--coastal)] hover:shadow-md"
         >
           Ver áreas de atuação
           <ArrowDownRight class="w-4 h-4" aria-hidden="true" />
         </a>
       </div>
+
+      <p
+        data-reveal
+        data-reveal-delay="350"
+        class="mt-4 font-mono text-xs text-[#607486] flex items-center gap-2"
+      >
+        <span class="inline-block h-1.5 w-1.5 rounded-full bg-[#198754]"></span>
+        Disponível para consultoria, arquitetura e desenvolvimento sob medida (PJ)
+      </p>
     </div>
 
     <div
@@ -83,7 +92,7 @@ const whatsappUrl =
       <div
         data-parallax
         data-parallax-speed="-0.04"
-        class="overflow-hidden rounded-[2rem] border border-[var(--coastal)]/20 bg-[#0e1724] p-3 shadow-2xl shadow-black/60 transition-transform duration-300"
+        class="overflow-hidden rounded-[2rem] border border-[#d7e1ea] bg-white p-3 shadow-xl shadow-slate-200/80 transition-transform duration-300"
       >
         <div class="relative aspect-[4/5] overflow-hidden rounded-[1.45rem]">
           <Image
@@ -96,10 +105,10 @@ const whatsappUrl =
             fetchpriority="high"
           />
           <div
-            class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#080d16] via-[#080d16]/80 to-transparent p-6 pt-24"
+            class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#142638] via-[#142638]/75 to-transparent p-6 pt-24"
           >
-            <p class="font-mono text-xs uppercase tracking-[.12em] text-[var(--coastal)] flex items-center gap-2">
-              <Cpu class="w-3.5 h-3.5" />
+            <p class="font-mono text-xs uppercase tracking-[.12em] text-[#e9f6fc] flex items-center gap-2 font-semibold">
+              <Cpu class="w-3.5 h-3.5 text-[var(--coastal)]" />
               Perfil técnico
             </p>
             <p class="mt-2 text-lg font-semibold text-white">
@@ -109,16 +118,17 @@ const whatsappUrl =
         </div>
       </div>
 
+      <!-- Card flutuante estilo Ticket Pickfast -->
       <div
         data-parallax
         data-parallax-speed="0.08"
-        class="absolute bottom-0 -left-4 max-w-[17.5rem] rounded-2xl border border-[var(--lava)]/25 bg-[#0e1724]/95 p-4 shadow-2xl backdrop-blur sm:-left-10"
+        class="absolute bottom-0 -left-4 max-w-[17.5rem] rounded-2xl border border-[#d7e1ea] bg-white/95 p-4 shadow-xl backdrop-blur sm:-left-10"
       >
-        <p class="font-mono text-[.65rem] font-bold uppercase tracking-[.12em] text-[var(--lava)] flex items-center gap-1.5">
+        <p class="font-mono text-[.68rem] font-bold uppercase tracking-[.12em] text-[var(--lava)] flex items-center gap-1.5">
           <ShieldCheck class="w-3.5 h-3.5" />
           Modo de trabalho
         </p>
-        <p class="mt-2 text-sm leading-5 text-slate-200">
+        <p class="mt-2 text-sm leading-5 text-[#293a4a] font-medium">
           Do problema operacional à arquitetura que dá escala e previsibilidade.
         </p>
       </div>

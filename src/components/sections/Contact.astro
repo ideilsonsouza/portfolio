@@ -1,28 +1,109 @@
 ---
-import { ArrowUpRight, Mail, MessageCircle } from "lucide-astro";
+import {
+  ArrowUpRight,
+  Briefcase,
+  CheckCircle2,
+  Code2,
+  Github,
+  Mail,
+  MessageCircle,
+  Wrench,
+} from "lucide-astro";
 
 const whatsappUrl =
   "https://wa.me/5564992462048?text=Ol%C3%A1%20Ideilson%2C%20vim%20pelo%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar!";
+
+const engagementModels = [
+  {
+    icon: Wrench,
+    title: "Diagnóstico & Resolução de Gargalos",
+    subtitle: "Intervenção pontual em incidentes",
+    description:
+      "Análise de causa-raiz em sistemas com lentidão, travamento de filas, consumo excessivo de memória ou falhas recorrentes em integrações.",
+    deliverable: "Relatório de diagnóstico + correção cirúrgica em código",
+  },
+  {
+    icon: Code2,
+    title: "Construção de Módulos Críticos",
+    subtitle: "Desenvolvimento sob demanda",
+    description:
+      "Arquitetura e desenvolvimento de barramentos de eventos, gateways de mensageria, conectores ERP/SEFAZ ou microsserviços em Rust, Go e Node.js.",
+    deliverable: "Módulo completo conteinerizado com testes e observabilidade",
+  },
+  {
+    icon: Briefcase,
+    title: "Liderança Técnica & Arquitetura (PJ)",
+    subtitle: "Atuação contínua com seu time",
+    description:
+      "Apoio sênior para tomadas de decisão estruturantes, desenho de sistemas distribuídos, padronização de APIs e mentoria técnica da squad.",
+    deliverable: "Alinhamento arquitetural contínuo e revisão de engenharia",
+  },
+];
 ---
 
 <section
   id="contact"
-  class="mx-auto max-w-7xl px-6 py-24 md:px-12"
+  class="border-t border-[#d7e1ea] bg-white py-28 md:py-36"
   aria-labelledby="contact-title"
 >
+  <div class="mx-auto max-w-7xl px-6 md:px-12">
+  <!-- Formatos de Parceria -->
+  <div data-reveal class="mb-14">
+    <p class="eyebrow text-[var(--lava)]">Formatos de atuação</p>
+    <h2 class="mt-3 text-3xl font-semibold tracking-[-.05em] text-[#142638] sm:text-4xl">
+      Como podemos trabalhar juntos
+    </h2>
+    <p class="mt-4 max-w-2xl text-base leading-7 text-[#607486]">
+      Flexibilidade para atuar onde sua empresa mais precisa, com foco em resultados mensuráveis e sem burocracia desnecessária.
+    </p>
+
+    <div class="mt-8 grid gap-6 md:grid-cols-3">
+      {
+        engagementModels.map((model) => {
+          const Icon = model.icon;
+          return (
+            <div class="rounded-2xl border border-[#d7e1ea] bg-white p-6 shadow-sm transition hover:border-[var(--coastal)] hover:shadow-md flex flex-col justify-between">
+              <div>
+                <div class="grid h-10 w-10 place-items-center rounded-xl border border-[#179bd7]/30 bg-[#e9f6fc] text-[#0f7db0]">
+                  <Icon class="w-5 h-5" />
+                </div>
+                <h3 class="mt-4 text-lg font-semibold text-[#142638]">
+                  {model.title}
+                </h3>
+                <p class="font-mono text-xs font-bold uppercase tracking-[.08em] text-[var(--lava)] mt-1">
+                  {model.subtitle}
+                </p>
+                <p class="mt-3 text-sm leading-6 text-[#607486]">
+                  {model.description}
+                </p>
+              </div>
+              <div class="mt-5 border-t border-[#f4f7fa] pt-4">
+                <p class="flex items-start gap-2 text-xs font-semibold text-[#198754]">
+                  <CheckCircle2 class="w-4 h-4 shrink-0 mt-0.5" />
+                  <span>{model.deliverable}</span>
+                </p>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+
+  <!-- Card Principal de Contato -->
   <div
     data-reveal
-    class="relative overflow-hidden rounded-[2rem] border border-[var(--lava)]/25 bg-[#0e1724] p-8 shadow-2xl sm:p-12 lg:p-16"
+    class="relative overflow-hidden rounded-[2.25rem] border border-[rgba(255,108,44,0.3)] bg-[#142638] p-8 shadow-2xl sm:p-12 lg:p-16 text-white"
   >
-    <!-- Background subtle glow Pickfast style -->
+    <!-- Background glow -->
     <div
       aria-hidden="true"
-      class="absolute -bottom-24 -right-24 -z-10 h-80 w-80 rounded-full bg-[var(--lava)]/10 blur-[100px]"
+      class="absolute -bottom-24 -right-24 -z-10 h-80 w-80 rounded-full bg-[var(--lava)]/15 blur-[90px]"
     >
     </div>
     <div
       aria-hidden="true"
-      class="absolute -top-24 -left-24 -z-10 h-80 w-80 rounded-full bg-[var(--coastal)]/10 blur-[100px]"
+      class="absolute -top-24 -left-24 -z-10 h-80 w-80 rounded-full bg-[var(--coastal)]/15 blur-[90px]"
     >
     </div>
 
@@ -35,9 +116,15 @@ const whatsappUrl =
         >
           Seu sistema está pedindo uma arquitetura melhor?
         </h2>
-        <p class="mt-6 max-w-xl text-lg leading-8 text-[var(--muted)]">
-          Vamos conversar sobre integrações, dados, produto ou uma operação que precisa ganhar escala e estabilidade.
+        <p class="mt-6 max-w-xl text-lg leading-8 text-[#d7e1ea]">
+          Vamos conversar sobre integrações, dados, produto ou uma operação que precisa ganhar escala, previsibilidade e estabilidade.
         </p>
+        <div class="mt-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-mono text-xs font-semibold text-[#198754] bg-[#198754]/20 border-[#198754]/40">
+          <span class="status-pulse-basil">
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-[#198754]"></span>
+          </span>
+          Atendimento PJ para todo o Brasil
+        </div>
       </div>
 
       <div class="flex flex-col gap-3.5">
@@ -45,7 +132,7 @@ const whatsappUrl =
           href={whatsappUrl}
           target="_blank"
           rel="noreferrer"
-          class="group inline-flex min-h-12 items-center justify-between rounded-full bg-[#198754] px-6 font-semibold text-white shadow-[0_4px_16px_rgba(25,135,84,0.35)] transition-all duration-200 hover:bg-[#157347] hover:shadow-[0_6px_22px_rgba(25,135,84,0.5)] hover:scale-[1.01]"
+          class="group inline-flex min-h-12 items-center justify-between rounded-full bg-[#198754] px-6 font-semibold text-white shadow-[0_4px_18px_rgba(25,135,84,0.35)] transition-all duration-200 hover:bg-[#157347] hover:shadow-[0_6px_24px_rgba(25,135,84,0.5)] hover:scale-[1.01]"
         >
           <span>Falar no WhatsApp</span>
           <MessageCircle
@@ -55,7 +142,7 @@ const whatsappUrl =
         </a>
         <a
           href="mailto:contato@icbox.com.br"
-          class="group inline-flex min-h-12 items-center justify-between rounded-full border border-[var(--coastal)]/30 bg-white/[0.02] px-6 font-semibold text-white transition-all duration-200 hover:border-[var(--coastal)] hover:bg-[var(--coastal)]/10 hover:scale-[1.01]"
+          class="group inline-flex min-h-12 items-center justify-between rounded-full border border-white/20 bg-white/5 px-6 font-semibold text-white transition-all duration-200 hover:border-[var(--coastal)] hover:bg-[var(--coastal)]/15 hover:scale-[1.01]"
         >
           <span>Enviar e-mail</span>
           <Mail
@@ -67,15 +154,28 @@ const whatsappUrl =
           href="https://www.linkedin.com/in/ideilson/"
           target="_blank"
           rel="noreferrer"
-          class="group inline-flex min-h-12 items-center justify-between rounded-full border border-white/15 bg-white/[0.02] px-6 font-semibold text-white transition-all duration-200 hover:border-white/40 hover:bg-white/5 hover:scale-[1.01]"
+          class="group inline-flex min-h-12 items-center justify-between rounded-full border border-white/20 bg-white/5 px-6 font-semibold text-white transition-all duration-200 hover:border-white/40 hover:bg-white/10 hover:scale-[1.01]"
         >
           <span>Conectar no LinkedIn</span>
           <ArrowUpRight
-            class="w-5 h-5 text-[var(--muted)] transition-all duration-200 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            class="w-5 h-5 text-[#8a9aaa] transition-all duration-200 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            aria-hidden="true"
+          />
+        </a>
+        <a
+          href="https://github.com/ideilsonsouza"
+          target="_blank"
+          rel="noreferrer"
+          class="group inline-flex min-h-12 items-center justify-between rounded-full border border-white/20 bg-white/5 px-6 font-semibold text-white transition-all duration-200 hover:border-white/40 hover:bg-white/10 hover:scale-[1.01]"
+        >
+          <span>Ver GitHub</span>
+          <Github
+            class="w-5 h-5 text-[#8a9aaa] transition-colors duration-200 group-hover:text-white"
             aria-hidden="true"
           />
         </a>
       </div>
     </div>
+  </div>
   </div>
 </section>

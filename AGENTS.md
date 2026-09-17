@@ -1,5 +1,9 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# Astro Project Rules
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+Este projeto utiliza **Astro 7 (Zero-JS por padrão)** com **Tailwind CSS v4** e **Lucide Astro**.
+
+## Diretrizes
+- Renderização estática com `output: 'static'` para deploy em Cloudflare Workers / Static Assets.
+- Zero-JS de runtime pesado no cliente. Interações usam micro-scripts em Vanilla JS ou `IntersectionObserver`.
+- Otimização de imagens com `astro:assets` e `sharp`.
+- Paleta clara inspirada na landing page do Pickfast (#F4F7FA, #142638, #FF6C2C, #179BD7, #198754).
